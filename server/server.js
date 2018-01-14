@@ -2,10 +2,10 @@ const path = require('path');
 const publicPath = path.join(__dirname, '../public');
 const express = require('express');
 const app = express();
-const { PORT } = require('./config');
+const PORT  = process.env.PORT || 8080;
 
 app.use(express.static(publicPath));
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
     console.log(`server is up on port ${PORT}`, )
 });
