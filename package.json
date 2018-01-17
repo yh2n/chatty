@@ -4,7 +4,11 @@
   "description": "multiroom chat app",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha **/**test.js --exit"
+  },
+  "engines": {
+    "node": "9.4.0"
   },
   "repository": {
     "type": "git",
