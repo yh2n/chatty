@@ -4,7 +4,7 @@
   "description": "multiroom chat app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha **/**test.js",
+    "test": "mocha **/**test.js --exit",
     "start": "npm start.js"
   },
   "repository": {
