@@ -22,3 +22,5 @@ io.on('connection', (socket => {
 server.listen(PORT, () => {
     console.log(`server is up on port ${PORT}`, )
 });
+
+module.exports = { app, server };
