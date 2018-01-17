@@ -4,6 +4,7 @@ const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 const { PORT }  = require('./config');
+const moment = require('moment');
 
 const app = express();
 const server = http.createServer(app);
@@ -14,7 +15,16 @@ app.use(express.static(publicPath));
 io.on('connection', (socket => {
     console.log("new connection");
 
-    socket.emit('newMessage');
+    socket.emit('newMessage', {
+        from: "bro@msg.com",
+        text: "whaddup dog?",
+        sent: moment().format("dddd, MMMM Do, YYYY"),
+        at: moment().format("h:m a")
+    });
+
+    socket.on('createMessage', (newMessage) => {
+        console.log('new message', newMessage)
+    })
 
     socket.on('disconnect', () => {
         console.log('user was disconnected from server')
