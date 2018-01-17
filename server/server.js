@@ -19,11 +19,14 @@ io.on('connection', (socket => {
         from: "bro@msg.com",
         text: "whaddup dog?",
         sent: moment().format("dddd, MMMM Do, YYYY"),
-        at: moment().format("h:m a")
+        at: moment().format("h:mm a")
     });
 
     socket.on('createMessage', (newMessage) => {
-        console.log('new message', newMessage)
+        console.log('new message', newMessage);
+        io.emit(newMessage, {
+            
+        })
     })
 
     socket.on('disconnect', () => {

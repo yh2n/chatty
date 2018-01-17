@@ -1,14 +1,11 @@
 let socket = io();
-//let moment = moment();
 
 socket.on('connect', function() {
     console.log("user connected to server");
 
     socket.emit('createMessage', {
-        to: "dude@msg.com",
-        text: "All good man...",
-        sent: moment().format("dddd, MMMM Do, YYYY"),
-        at: moment().format("h:m a")
+        from: "dude@msg.com",
+        text: "All good man..."
     })
 });
 
