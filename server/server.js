@@ -3,7 +3,7 @@ const publicPath = path.join(__dirname, '../public');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const {PORT}  = require('./config');
+const { PORT }  = require('./config');
 
 const app = express();
 const server = http.createServer(app);
