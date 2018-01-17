@@ -14,6 +14,8 @@ app.use(express.static(publicPath));
 io.on('connection', (socket => {
     console.log("new connection");
 
+    socket.emit('newMessage');
+
     socket.on('disconnect', () => {
         console.log('user was disconnected from server')
     }) 
@@ -23,4 +25,4 @@ server.listen(PORT, () => {
     console.log(`server is up on port ${PORT}`, )
 });
 
-module.exports = { app, server };
+module.exports = { app, server }; 
