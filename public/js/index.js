@@ -29,3 +29,23 @@ $("#message-form").on("submit", (e) => {
 
     })
 })
+
+let locationBtn = $("#share_location");
+locationBtn.on("click", () => {
+    //navigator.geolocation object doesn't exist
+    if(!navigator.geolocation) {
+        return alert("Geolocation not supported by your browser.");
+    }
+    else {
+        //2nd callback function for error handling
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.table(position);
+            socket.emit("createLocationMessage", {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            });
+        }, () => {
+            alert("Unable to get location")
+        });
+    }
+});
