@@ -14,7 +14,7 @@
     border: solid black;
 }
 
-#message-form {
+#form-container {
     grid-row-start: 12;
     display: grid;
     margin: auto;
@@ -22,6 +22,18 @@
     text-align: center;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
 input {
     height: 20px;
+}
+
+#messages {
+    list-style: none;
 }
