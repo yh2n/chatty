@@ -24,13 +24,6 @@ socket.on('newMessage', function(message) {
 
 //location <li>
 socket.on("newLocationMessage", message => {
-    // let li = $('<li></li>');
-    // let a = $('<a target="_blank">Current location</a>');   
-    // li.text(`${message.from}: `);
-    // a.attr("href", message.url);
-    // li.append(a);
-    // $("#messages").append(li);
-
     let template = $("#location-message-template").html();
     let html = Mustache.render(template, {
         url: message.url,
