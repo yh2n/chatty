@@ -57,7 +57,7 @@ button:disabled {
 .message_title {
     display: flex;
     margin-bottom: 5px;
-    border: solid black;
+    /* border: solid black; */
 }
   
 .message_title h4 {
