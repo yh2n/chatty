@@ -6,7 +6,7 @@ const socketIO = require('socket.io');
 const { PORT }  = require('./config');
 const moment = require('moment');
 
-const { generateMessage } = require('../server/utils/message');
+const { generateMessage, generateLocationMessage } = require('../server/utils/message');
 const app = express();
 const server = http.createServer(app);
 let io = socketIO(server);
@@ -25,12 +25,16 @@ io.on('connection', (socket => {
         console.log('new message', message);
         io.emit('newMessage', generateMessage(message.from, message.text));
         //argument: data being sent to client
-        callback(`(from: server)`);
-    })
+        callback();
+    });
+
+    socket.on("createLocationMessage", (coords) => {
+        io.emit("newLocationMessage", generateLocationMessage("Admin", coords.latitude, coords.longitude));
+    });
 
     socket.on('disconnect', () => {
         console.log('user was disconnected from server')
-    }) 
+    }) ;
 }))
 
 server.listen(PORT, () => {
