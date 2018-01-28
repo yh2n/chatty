@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 * {
     box-sizing: border-box;
 }
@@ -74,32 +73,3 @@ button:disabled {
       list-style-position: inside;
       list-style-type: none;
   }
-=======
-.chat-container {
-    display: grid;
-    grid-template-columns: 300px auto;
-    height: 98vh;
-}
-
-.user-list {
-    border: solid black;
-    text-align: center;
-}
-
-.main-area {
-    display: grid;
-    border: solid black;
-}
-
-#message-form {
-    grid-row-start: 12;
-    display: grid;
-    margin: auto;
-    grid-template-columns: 3fr 1fr 1fr;
-    text-align: center;
-}
-
-input {
-    height: 20px;
-}
->>>>>>> 9adb6177bc05d733105b9656482e75bce0ea6eb3
