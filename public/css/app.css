@@ -8,20 +8,28 @@ body {
 
 .user-list {
     width: 25%;
+    background: #72C2E2;
 }
 
 .main-area {
     display: flex;
     flex-direction: column;
-    border: solid black;
+    border: solid grey;
     width: 100%;
     height: 100vh;
-    background: #63A396;
+    background: #13395D;
+    color: white;
 }
 #messages {
     flex-grow: 1;
     overflow-y: scroll;
 }
+
+.message {
+    border: solid black;
+    padding: 10px;
+}
+
 #form-container {
     display: flex;
     flex-shrink: 0;
@@ -30,7 +38,7 @@ body {
     padding: 10px;
     margin: 5px;
     width: 100%;
-    background: grey;
+    background: #13395D;
 }
 
 #form-container input {
@@ -51,22 +59,23 @@ button:disabled {
     cursor: not-allowed;
 }
 
-#share_location {
+/* #share_location {
     align-self: flex-end;
-}
+} */
+
 .message_title {
     display: flex;
     margin-bottom: 5px;
-    border: solid black;
 }
   
 .message_title h4 {
     font-weight: 600;
-    margin-right: 10px;
+    margin-right: 20px;
   }
 
   .message_title span {
       color: grey;
+      margin: 20px;
   }
 
   li {
