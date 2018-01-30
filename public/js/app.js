@@ -1,9 +1,11 @@
 let socket = io();
 
-//event listeners
+//EVENT LISTENER
+
 socket.on('connect', function() {
     console.log("user connected to server");
-    let params = $.deparam(window.location.search);
+    //deparam library converts query string into object  ---> https://github.com/AceMetrix/jquery-deparam  
+    let params = $.deparam(window.location.search.substring(1));
     console.log(params);
     socket.emit("join", params, function(err) {
         if(err) {
@@ -64,7 +66,7 @@ locationBtn.on("click", () => {
         return alert("Geolocation not supported by your browser.");
     }
     else {
-        //geoloaction enabbled
+        //geolocation enabbled
         //2nd callback function for error handling
         navigator.geolocation.getCurrentPosition((position) => {
             console.table(position);

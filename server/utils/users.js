@@ -1,10 +1,5 @@
-// Store users
+//Persistance enabled via socket.id
 
-[{
-
-}]
-
-//POST user
 class Users {
     constructor() {
         this.users = [];
@@ -14,13 +9,25 @@ class Users {
        this.users.push(user);
        return user
     }
+    removeUser(id) {
+        let user = this.getUser(id)
+
+        if(user) {
+            this.users = this.users.filter(user => user.id !== id)
+        }
+        return user
+    }
+    getUser(id) {
+        return this.users.filter(user => user.id === id)[0]
+    }
+    getUserList(room) {
+      //find users in any given room
+      let users = this.users.filter(user => user.room === room);
+      let names = users.map(user => user.name);
+      
+      return names;
+    }
 }
-
-//DELETE user
-
-//GET user
-
-//GET user list
 
 
 module.exports = { Users }
