@@ -7,7 +7,7 @@ const moment = require('moment');
 
 const { PORT }  = require('./config');
 const { generateMessage, generateLocationMessage } = require('../server/utils/message');
-const { isString } = require('../server/utils/validators');
+const { validEntry } = require('../server/utils/validators');
 
 const app = express();
 const server = http.createServer(app);
@@ -20,21 +20,23 @@ app.use(express.static(publicPath));
 // socket.broadcast.emit: message to everyone connected to socket server except for message emitter
 // socket.broadcast.to: message to everyone in any given room except for message emitter
 // socket.emit: message to specific user
-// socket.on event listener
+// socket.on: event listener
+// socket.join: join a room
+// socket.leave
 
 io.on('connection', (socket => {
     console.log("new connection");
 
     //listener for "join"
     socket.on("join", (params, callback) => {
-        if(!isString(params.name) || !isString(params.room)) {
+        if(!validEntry(params.username) || !validEntry(params.room)) {
             callback("Invalid entry...");
         }
         socket.join(params.room);
-        socket.emit('newMessage', generateMessage('Admin', 'Welcome to chatty'));
+        socket.emit('newMessage', generateMessage('Admin', `Welcome to chat'up`));
         socket.broadcast.to(params.room).emit('newMessage', generateMessage('Admin', `${params.username} joined the conversation`));
         callback();
-    })
+    });
     //1st argument to callback argument list is data being sent
     //2nd one is callback function that acknowledges request
     socket.on('createMessage', (message, callback) => {
