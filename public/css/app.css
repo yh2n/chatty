@@ -7,8 +7,9 @@ body {
 }
 
 .user-list {
-    width: 25%;
-    background: #72C2E2;
+    width: 30%;
+    background-color: #08AEEA;
+    background-image: linear-gradient(146deg, #08AEEA 0%, #2af5b2 100%);
 }
 
 .main-area {
@@ -17,8 +18,6 @@ body {
     border: solid grey;
     width: 100%;
     height: 100vh;
-    background: #13395D;
-    color: white;
 }
 #messages {
     flex-grow: 1;
@@ -38,7 +37,7 @@ body {
     padding: 10px;
     margin: 5px;
     width: 100%;
-    background: #13395D;
+    background: #63CCC7;
 }
 
 #form-container input {

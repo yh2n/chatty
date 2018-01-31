@@ -3,11 +3,12 @@ const publicPath = path.join(__dirname, '../public');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const { PORT }  = require('./config');
 const moment = require('moment');
 
+const { PORT }  = require('./config');
 const { generateMessage, generateLocationMessage } = require('../server/utils/message');
 const { isString } = require('../server/utils/validators');
+
 const app = express();
 const server = http.createServer(app);
 let io = socketIO(server);
@@ -19,6 +20,7 @@ app.use(express.static(publicPath));
 // socket.broadcast.emit: message to everyone connected to socket server except for message emitter
 // socket.broadcast.to: message to everyone in any given room except for message emitter
 // socket.emit: message to specific user
+// socket.on event listener
 
 io.on('connection', (socket => {
     console.log("new connection");
@@ -26,7 +28,7 @@ io.on('connection', (socket => {
     //listener for "join"
     socket.on("join", (params, callback) => {
         if(!isString(params.name) || !isString(params.room)) {
-            callback("invalid entry...");
+            callback("Invalid entry...");
         }
         socket.join(params.room);
         socket.emit('newMessage', generateMessage('Admin', 'Welcome to chatty'));
