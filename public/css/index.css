@@ -4,6 +4,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -12,21 +13,31 @@ body {
     
 }
 
+h1 {
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+    color: #C6E8E9
+}
 .homepage_form {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 100px;
     background: white;
     height: 350px;
     border-radius: 3px;
     text-align: center;
 }
 
+.form-field h3 {
+    font-family: 'Lobster', cursive;
+    color: #52E0E5;
+}
 .homepage_form input {
     display: block; 
     border-top: none;
 	border-right: none;
-	border-bottom: 1px solid;
+	border-bottom: 1px solid #52E0E5;
 	border-left: none;
     font-size: 25px;
     font-weight: 300;
@@ -40,7 +51,15 @@ body {
 .homepage_form input:focus {
     border-bottom: 2px solid;
     color: #52E0E5;
+}
 
+.homepage_form input::placeholder {
+    color: #52E0E5;
+    opacity: 0.3; 
+}
+
+input[name="username"] {
+    margin-top: 50px;
 }
 
 .homepage_form button {
@@ -49,6 +68,7 @@ body {
     font-size: 15px;
     border-radius: 3px;
     border: solid #52E0E5;
+    color: #52E0E5;
 }
 
 .homepage_form button:hover {

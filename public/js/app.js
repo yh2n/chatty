@@ -10,7 +10,7 @@ socket.on('connect', function() {
     socket.emit("join", params, function(err) {
         if(err) {
             alert(err);
-            //window.location.href = '/';
+            window.location.href = '/';
         } else {
             console.log("access granted");
         }
@@ -61,7 +61,7 @@ $("#message-form").on("submit", (e) => {
 let locationBtn = $("#share_location");
 locationBtn.on("click", () => {
     //navigator.geolocation object doesn't exist
-    locationBtn.attr("disabled", "disabled").text("Sending location...");
+    locationBtn.attr("disabled", "disabled").html(`<div class="loader"></div>`);
     if(!navigator.geolocation) {
         return alert("Geolocation not supported by your browser.");
     }
@@ -70,13 +70,13 @@ locationBtn.on("click", () => {
         //2nd callback function for error handling
         navigator.geolocation.getCurrentPosition((position) => {
             console.table(position);
-            locationBtn.removeAttr("disabled").text("Share location");
+            locationBtn.removeAttr("disabled").html(`<i class="material-icons">location_on</i>`);
             socket.emit("createLocationMessage", {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             }); 
         }, () => {
-            locationBtn.removeAttr("disabled").text("Share location");
+            locationBtn.removeAttr("disabled").html(`<i class="material-icons">location_off</i>`);
             alert("Unable to get location");
         });
     }
