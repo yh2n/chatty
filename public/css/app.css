@@ -6,12 +6,21 @@ body {
     display: flex;
 }
 
-.user-list {
+.participants {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 30%;
     background-color: #08AEEA;
     background-image: linear-gradient(146deg, #08AEEA 0%, #2af5b2 100%);
 }
 
+.user {
+    border: solid black;
+    padding: 10px;
+    list-style-position: inside;
+    width: 80%;    
+}
 .main-area {
     display: flex;
     flex-direction: column;
@@ -87,15 +96,15 @@ button:disabled {
     margin-right: 20px;
   }
 
-  .message_title span {
+.message_title span {
       color: grey;
       margin: 20px;
-  }
+}
 
-  li {
+.message {
       list-style-position: inside;
       list-style-type: none;
-  }
+}
 
 .material-icons {
     color: #52E0E5;

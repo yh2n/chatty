@@ -12,9 +12,11 @@
 </head>
 
 <body>
-    <div class="user-list">
+    <div class="participants">
         <h1>Participants</h1>
-        <div class="users"></div>
+        <div class="users">
+            <div class="user-list"></div>
+        </div>
     </div>
 
     <div class="main-area">
@@ -29,28 +31,30 @@
     </div>
 
     <script id="message-template" type="x-tmpl-mustache">
-            <li class="message">
-                <div class="message_title">
-                    <h4>{{from}}</h4>
-                    <span>{{at}}</span>
-                </div>
-                <div class="message_body">
-                    <p>{{text}}</p>
-                </div>
-            </li>
-    </script>
-    <script id="location-message-template" type="x-tmpl-mustache">
-            <li class="message">
-                <div class="message_title">
-                    <h4>{{from}}</h4>
-                    <span>{{at}}</span>
-                </div>
-                <div class="message_body">
-                    <a href="{{url}}" target="__blank">My current location</a>
-                </div>
-            </li>
+        <li class="message">
+            <div class="message_title">
+                <h4>{{from}}</h4>
+                <span>{{at}}</span>
+            </div>
+            <div class="message_body">
+                <p>{{text}}</p>
+            </div>
+        </li>
     </script>
 
+    <script id="location-message-template" type="x-tmpl-mustache">
+        <li class="message">
+            <div class="message_title">
+                <h4>{{from}}</h4>
+                <span>{{at}}</span>
+            </div>
+            <div class="message_body">
+                <a href="{{url}}" target="__blank">My current location</a>
+            </div>
+        </li>
+    </script>
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/app.js"></script>

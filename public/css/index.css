@@ -46,11 +46,12 @@ h1 {
     text-align: center;
     cursor: text;
     outline: none;
+    color: #52E0E5;
 }
 
 .homepage_form input:focus {
     border-bottom: 2px solid;
-    color: #52E0E5;
+    color: #D334C9;
 }
 
 .homepage_form input::placeholder {

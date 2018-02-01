@@ -2,12 +2,13 @@ let socket = io();
 
 //EVENT LISTENER
 
-socket.on('connect', function() {
+socket.on('connect', () => {
     console.log("user connected to server");
-    //deparam library converts query string into object  ---> https://github.com/AceMetrix/jquery-deparam  
+    //deparam library converts query string into object  ---> https://github.com/AceMetrix/jquery-deparam 
+    // calling "substring(1)" after "search" removes the "?" after the username params 
     let params = $.deparam(window.location.search.substring(1));
     console.log(params);
-    socket.emit("join", params, function(err) {
+    socket.emit("join", params, err => {
         if(err) {
             alert(err);
             window.location.href = '/';
@@ -18,12 +19,24 @@ socket.on('connect', function() {
 
 });
 
-socket.on('disconnect', function () {
+socket.on('disconnect', () => {
     console.log('user disconnected from server');
 });
 
+socket.on("userListUpdate", users => {
+    console.log(`users ${users}`);
+    let ol = $("<ol></ol>");
+    users.forEach(user => {
+        ol.append($(`<li class="user"></li>`).text(user));
+    });
+    // .html() and not .append() since we want to render a new list
+    //when there is an update
+    $(".user-list").html(ol);
+})
+
+
 //text <li>
-socket.on('newMessage', function(message) {
+socket.on('newMessage', message => {
     let template = $("#message-template").html();
     let html = Mustache.render(template, {
         text: message.text,
@@ -68,7 +81,7 @@ locationBtn.on("click", () => {
     else {
         //geolocation enabbled
         //2nd callback function for error handling
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition(position => {
             console.table(position);
             locationBtn.removeAttr("disabled").html(`<i class="material-icons">location_on</i>`);
             socket.emit("createLocationMessage", {
