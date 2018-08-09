@@ -58,7 +58,8 @@ socket.on("newLocationMessage", message => {
     $("#messages").append(html);
 })
 
-// event emitter
+
+// EVENT EMITTER
 //3rd argument: callback function that's triggered when acknowledgement arrives
 let textField = $('[name=message]')
 $("#message-form").on("submit", (e) => {
